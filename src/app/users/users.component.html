@@ -1,0 +1,44 @@
+<div class="col-md-12 user-container">
+    <h2 style="margin: auto"> User Details</h2>
+    <button class="btn btn-danger" style="float: right;width:100px;margin-bottom: 1em;" (click)="addUser()"> Add User</button>
+    <br />
+    <form [formGroup]="formGroup">
+      <input
+        type="text"
+        class="form-control"
+        name="searchString"
+        placeholder="Type to search..."
+        formControlName="filter"
+        (input)="filter($event)"
+      />
+    </form>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <!-- <th class="hidden">Id</th> -->
+        <th>Name</th>
+        <th>Locality</th>
+        <!-- commented for future use -->
+        <!-- <th>age</th>
+        <th>dob</th>
+        <th>profession</th>
+        <th>noOfGuest</th> -->
+        <th>Details</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of filteredUsers">
+        <!-- <td class="hidden">{{user.id}}</td> -->
+        <td>{{user.name}}</td>
+        <td>{{user.locality}}</td>
+        <!-- commented for future use -->
+        <!-- <td>{{user.age}}</td>
+        <td>{{user.dob}}</td>
+        <td>{{user.profession}}</td>
+        <td>{{user.noOfGuest}}</td> -->
+        <td style="cursor: pointer;" (click)='getUserDetails(user.id);'>View Details</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  

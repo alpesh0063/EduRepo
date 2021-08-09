@@ -1,0 +1,70 @@
+<div class="col-md-6 user-container">
+    <h2 class="text-center">Add User</h2>
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" formControlName="name" placeholder="Enter name" name="name" class="form-control" id="name">
+        <span class="text-danger" *ngIf="(addForm.controls.name.touched || submitted) && addForm.controls.name.errors?.required">
+            Name is required
+        </span>
+      </div>
+  
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" formControlName="age" placeholder="Enter age" name="age" class="form-control" id="age">
+        <span class="text-danger" *ngIf="(addForm.controls.age.touched || submitted) && addForm.controls.age.errors?.required">
+            Age is required
+        </span>
+      </div>
+  
+      <div class="form-group">
+        <label for="dob">Date Of Birth:</label>
+        <input type="date" formControlName="dob" placeholder="Enter date of birth" name="dob" class="form-control" id="dob">
+        <span class="text-danger" *ngIf="(addForm.controls.dob.touched || submitted) && addForm.controls.dob.errors?.required">
+            Date of birth is required
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="profession" style="padding: 10px 10px 10px 0;">Profession: </label>
+        <!-- <input type="radio" formControlName="profession" name="profession" class="form-control" id="profession"> -->
+        <label style="padding: 10px;" class="form-check-label" for="profession">
+            <input type="radio" value="Employed" formControlName="profession">
+            Employed
+        </label>
+        <label style="padding: 10px;" class="form-check-label" for="profession">
+            <input type="radio" value="Student" formControlName="profession">
+            Student
+        </label>
+        <span class="text-danger" *ngIf="(addForm.controls.profession.touched || submitted) && addForm.controls.profession.errors?.required">
+            Profession is required
+        </span>
+      </div>
+  
+      <div class="form-group">
+        <label for="noOfGuest">No Of Guest:</label>
+        <input type="number" min="0" max="2" formControlName="noOfGuest" placeholder="count of guest(max 2)" name="noOfGuest" class="form-control" id="noOfGuest">
+        <span class="text-danger" *ngIf="(addForm.controls.noOfGuest.touched || submitted) && (addForm.controls.noOfGuest.errors?.required||addForm.controls.noOfGuest.errors?.max||addForm.controls.noOfGuest.errors?.min)">
+            No of guess is required and should be max 2
+        </span>
+      </div>
+  
+      <div class="form-group">
+        <label for="age">Locality:</label>
+        <input type="text" formControlName="locality" placeholder="Enter locality" name="locality" class="form-control" id="locality">
+        <span class="text-danger" *ngIf="(addForm.controls.locality.touched || submitted) && addForm.controls.locality.errors?.required">
+          Locality is required
+        </span>
+      </div>
+  
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <textarea formControlName="address" placeholder="Enter address" name="address" class="form-control" id="address"></textarea>
+        <span class="text-danger" *ngIf="(addForm.controls.address.touched || submitted) && (addForm.controls.address.status=='PENDING'||addForm.controls.address.errors?.required||addForm.controls.address.errors?.maxlength)">
+          Address is required and should be max 50 characters
+      </span>
+      </div>
+      <button class="btn btn-success">Add</button>
+    </form>
+  </div>
+  
